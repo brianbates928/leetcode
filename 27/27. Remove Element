@@ -1,0 +1,23 @@
+public class Solution {
+    public int RemoveElement(int[] nums, int val) {
+        // First basic C# program
+        // Initialize a counter for the number of elements not equal to val
+        int count = 0;
+        
+        // Iterate over each element in the array
+        for (int i = 0; i < nums.Length; i++) {
+            // If the current element is not equal to val
+            if (nums[i] != val) {
+                // Assign the current element to the position of the count
+                // This effectively "removes" the element equal to val by overwriting it
+                nums[count] = nums[i];
+                
+                // Increment the count
+                count++;
+            }
+        }
+        
+        // Return the count, which is the number of elements not equal to val
+        return count;
+    }
+}
