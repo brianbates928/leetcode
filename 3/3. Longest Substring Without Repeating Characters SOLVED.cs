@@ -17,7 +17,7 @@ public class Solution {
                 ans = Math.Max(ans, j - i);
             }
             // If the character at position j is in the set, 
-            // clear the set and start with substring using after repeated char of 
+            // clear the set and start over count with substring after repeated char
             else {
                 set.Remove(s[i++]);
             }
