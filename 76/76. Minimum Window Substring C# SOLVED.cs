@@ -1,6 +1,6 @@
 public class Solution {
     public string MinWindow(string s, string t) {
-        if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(t)) {
+        if (string.IsNullOrEmpty(s) || string.IsNullOrEmpty(t) || s.Length < t.Length) {
             return "";
         }
 
@@ -12,7 +12,7 @@ public class Solution {
         int required = t.Length;
         int left = 0, right = 0;
         int minLen = int.MaxValue;
-        string minWindow = "";
+        int start = 0; // to store the starting index of min window
 
         while (right < s.Length) {
             if (tFrequency[s[right]] > 0) {
@@ -23,7 +23,7 @@ public class Solution {
             while (required == 0) {
                 if (right - left + 1 < minLen) {
                     minLen = right - left + 1;
-                    minWindow = s.Substring(left, minLen);
+                    start = left; // update the start index
                 }
 
                 tFrequency[s[left]]++;
@@ -35,6 +35,6 @@ public class Solution {
             right++;
         }
 
-        return minWindow;
+        return minLen == int.MaxValue ? "" : s.Substring(start, minLen);
     }
 }
